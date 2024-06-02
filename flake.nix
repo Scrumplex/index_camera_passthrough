@@ -1,7 +1,7 @@
 {
   inputs.fenix = {
     inputs.nixpkgs.follows = "nixpkgs";
-    url = github:nix-community/fenix;
+    url = "github:nix-community/fenix";
   };
   inputs.rust-manifest = {
     flake = false;
@@ -27,6 +27,7 @@
         export LD_LIBRARY_PATH="${lib.makeLibraryPath [ libglvnd vulkan-loader ]}:$LD_LIBRARY_PATH"
       '';
       LIBCLANG_PATH = lib.makeLibraryPath [ llvmPackages_17.libclang.lib ];
+      SHADERC_LIB_DIR = "${lib.getLib shaderc}/lib";
 
       BINDGEN_EXTRA_CLANG_ARGS =
       # Includes with normal include path
